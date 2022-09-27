@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "husky install",
     "format": "prettier --cache --write .",
-    "linst": "eslint --cache"
+    "linst": "eslint --cache",
+    "install": "cd client && npm install && cd ../server && npm install"
   },
   "author": "",
   "license": "ISC",
