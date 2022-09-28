@@ -14,10 +14,6 @@ function Recommendation({searchingDatas, curLocation}) {
         return <RecommendItem splitedArr={splitedArr}isActive={isActive}/>
 			}
 			)}
-
-      <RecommendItem text={'췌장암'} />
-      <RecommendItem text={'췌장염'} isActive={true} />
-      <RecommendItem text={'췌장 신드롬'} />
     </Container>
   );
 }

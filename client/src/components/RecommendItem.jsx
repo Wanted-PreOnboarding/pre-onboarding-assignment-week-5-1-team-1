@@ -6,7 +6,6 @@ function RecommendItem({ splitedArr, isActive }) {
   return (
     <Container isActive={isActive}>
       <StyledSearch />
-      {/* <div key={data} style={{color: curLocation === index && 'red'}} > */}
         <span>{splitedArr[0]}</span>
         <b>{splitedArr[1]}</b>
         <span>{splitedArr[2]}</span>
