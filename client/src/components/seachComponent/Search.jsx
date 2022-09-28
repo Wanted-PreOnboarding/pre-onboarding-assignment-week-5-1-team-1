@@ -2,38 +2,12 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import SearchBox from '../SearchBox';
 import Recommendation from '../Recommendation';
-
-const datas =  [
-	{
-		"sickCd": "A00",
-		"sickNm": "콜레라"
-	},
-	{
-		"sickCd": "A01",
-		"sickNm": "장티푸스 및 파라티푸스"
-	},
-	{
-		"sickCd": "A02",
-		"sickNm": "기타 살모넬라 감염"
-	},
-	{
-		"sickCd": "A03",
-		"sickNm": "시겔라증"
-	},
-	{
-		"sickCd": "A04",
-		"sickNm": "기타 세균성 장 감염"
-	},]
-
+import useSearch from '../../hooks/useSearch';
 
 const Search = () => {
-	const [search, setSearch] = useState('')
+	const {input, searchList, onChangeInput} = useSearch()
 	const [searchingDatas, setSearchingDatas] = useState([])
 	const [curLocation, setCurLocation] = useState(0)
-
-	function handleSearch(e){
-		setSearch(e.target.value)
-	}
 
 	function handleNavigate(e){
 		const {key} = e
@@ -45,20 +19,27 @@ const Search = () => {
 	}
 
 	useEffect(() => {
-		if(search){
-			const boldedDatas = datas.map((data) => {
-				let regex = new RegExp(search, "gim");
-				return data.sickNm.replace(regex, `<b>${search}<b>`)
+		if(input){
+			const boldedDatas = searchList.map((data) => {
+				let regex = new RegExp(input, "gim");
+				return data.sickNm.replace(regex, `<b>${input}<b>`)
 			})
 			setSearchingDatas(boldedDatas)
 		}
-	}, [search])
+	}, [searchList])
 	
 
 	return (
     <Container>
-      <SearchBox search={search} handleSearch={handleSearch} handleNavigate={handleNavigate}/>
-      <Recommendation searchingDatas={searchingDatas}curLocation={curLocation}/>
+      <SearchBox 
+				input={input}
+				handleNavigate={handleNavigate}
+				onChangeInput={onChangeInput}
+			/>
+      <Recommendation 
+				searchingDatas={searchingDatas}
+				curLocation={curLocation}
+			/>
     </Container>
 	);
 };
