@@ -2,12 +2,27 @@ import React from 'react';
 import styled from 'styled-components';
 import RecommendItem from './RecommendItem';
 
-function Recommendation() {
+function Recommendation({input, searchingDatas, curLocation}) {
+  if(searchingDatas?.length === 0 && input !== ""){
+    return (
+      <Container>
+        <RecommendItem text={'검색어 없음'} />
+      </Container>
+    )
+  }
+
   return (
     <Container>
-      <RecommendItem text={'췌장암'} />
-      <RecommendItem text={'췌장염'} isActive={true} />
-      <RecommendItem text={'췌장 신드롬'} />
+      {searchingDatas?.map((data, index) => {
+				const splitedArr = data.split("<b>")
+        const randomNum = Math.random()* 1000
+        let isActive = false
+        if(curLocation === index){
+          isActive = true
+        }
+        return <RecommendItem key={randomNum} splitedArr={splitedArr}isActive={isActive}/>
+			}
+			)}
     </Container>
   );
 }

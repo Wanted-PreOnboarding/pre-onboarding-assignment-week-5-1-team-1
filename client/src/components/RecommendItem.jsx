@@ -2,11 +2,23 @@ import React from 'react';
 import styled from 'styled-components';
 import { BiSearch } from 'react-icons/bi';
 
-function RecommendItem({ text, isActive }) {
+function RecommendItem({ splitedArr, isActive, text }) {
+
+  if(!splitedArr && !isActive){
+    return (
+      <Container isActive={isActive}>
+      <StyledSearch />
+        {text}
+      </Container>
+    )
+  }
+
   return (
     <Container isActive={isActive}>
       <StyledSearch />
-      {text}
+        <span>{splitedArr[0]}</span>
+        <b>{splitedArr[1]}</b>
+        <span>{splitedArr.slice(2)}</span>
     </Container>
   );
 }
