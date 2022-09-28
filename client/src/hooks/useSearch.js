@@ -27,6 +27,9 @@ function useSearch() {
     if(input.length > 0) {
       debounce(getResults(input), 300);
     }
+    if(input.length === 0) {
+      setSearchList([]);
+    }
   }, [input])
 
   return {input, searchList, onChangeInput};
