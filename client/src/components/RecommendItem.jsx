@@ -2,11 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { BiSearch } from 'react-icons/bi';
 
-function RecommendItem({ text, isActive }) {
+function RecommendItem({ splitedArr, isActive }) {
   return (
     <Container isActive={isActive}>
       <StyledSearch />
-      {text}
+      {/* <div key={data} style={{color: curLocation === index && 'red'}} > */}
+        <span>{splitedArr[0]}</span>
+        <b>{splitedArr[1]}</b>
+        <span>{splitedArr[2]}</span>
     </Container>
   );
 }

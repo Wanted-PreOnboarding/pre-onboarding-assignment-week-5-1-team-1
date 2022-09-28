@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
-// import styled from 'styled-components'
+import React, {useState, useEffect} from 'react';
+import styled from 'styled-components';
+import SearchBox from '../SearchBox';
+import Recommendation from '../Recommendation';
 
 const datas =  [
 	{
@@ -49,45 +51,25 @@ const Search = () => {
 				return data.sickNm.replace(regex, `<b>${search}<b>`)
 			})
 			setSearchingDatas(boldedDatas)
-
 		}
-
-
 	}, [search])
 	
 
 	return (
-		<div>
-			<input type="text" value={search} placeholder='검색어를 입력해주세요.'  onChange={handleSearch} onKeyDown={handleNavigate}/>
-			<button>검색</button>
-			<Data searchingDatas={searchingDatas} curLocation={curLocation}/>
-		</div>
-
-
+    <Container>
+      <SearchBox search={search} handleSearch={handleSearch} handleNavigate={handleNavigate}/>
+      <Recommendation searchingDatas={searchingDatas}curLocation={curLocation}/>
+    </Container>
 	);
 };
 
-const Data = ({searchingDatas, curLocation}) => {
-		console.info(curLocation)
-
-		return <div>
-			추천 검색어가 나와야 할 곳
-			<hr></hr>
-			{searchingDatas?.map((data, index) => {
-				const splitedArr = data.split("<b>")
-				return (
-					<div key={data} style={{color: curLocation === index && 'red'}} >
-						<span>{splitedArr[0]}</span>
-						<b>{splitedArr[1]}</b>
-						<span>{splitedArr[2]}</span>
-					</div>
-				)
-			}
-			)}
-			</div>
-	
-	// return (<div>{datas.map((data) => <div key={data.sickCd}>{data.sickNm}</div>)}</div>)
-	
-}
-
 export default Search;
+
+const Container = styled.div`
+  background-color: #d0e8fd;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`;

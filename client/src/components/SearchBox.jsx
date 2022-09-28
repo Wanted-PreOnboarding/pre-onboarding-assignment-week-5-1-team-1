@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { BiSearch } from 'react-icons/bi';
 
-function SearchBox() {
+function SearchBox({search, handleSearch, handleNavigate}) {
   return (
     <Container>
       <StyledSearch />
-      <Input />
+      <Input  type="text" value={search} placeholder='검색어를 입력해주세요.'  onChange={handleSearch} onKeyDown={handleNavigate} />
       <Button>검색</Button>
     </Container>
   );
