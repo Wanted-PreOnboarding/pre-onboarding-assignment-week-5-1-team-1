@@ -1,5 +1,7 @@
+import Search from "./Search";
+
 function App() {
-  return <div />;
+  return <Search/>;
 }
 
 export default App;
