@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+// import styled from 'styled-components'
 
 const datas =  [
 	{
@@ -26,9 +27,19 @@ const datas =  [
 const Search = () => {
 	const [search, setSearch] = useState('')
 	const [searchingDatas, setSearchingDatas] = useState([])
+	const [curLocation, setCurLocation] = useState(0)
 
 	function handleSearch(e){
 		setSearch(e.target.value)
+	}
+
+	function handleNavigate(e){
+		const {key} = e
+		if(key === 'ArrowDown'){
+			setCurLocation(curLocation + 1)
+		}else if(key === 'ArrowUp'){
+			setCurLocation(curLocation - 1)
+		}
 	}
 
 	useEffect(() => {
@@ -47,24 +58,25 @@ const Search = () => {
 
 	return (
 		<div>
-			<input type="text" value={search} placeholder='검색어를 입력해주세요.'  onChange={handleSearch}/>
+			<input type="text" value={search} placeholder='검색어를 입력해주세요.'  onChange={handleSearch} onKeyDown={handleNavigate}/>
 			<button>검색</button>
-			<Data searchingDatas={searchingDatas}/>
+			<Data searchingDatas={searchingDatas} curLocation={curLocation}/>
 		</div>
 
 
 	);
 };
 
-const Data = ({searchingDatas}) => {
+const Data = ({searchingDatas, curLocation}) => {
+		console.info(curLocation)
 
 		return <div>
 			추천 검색어가 나와야 할 곳
 			<hr></hr>
-			{searchingDatas?.map((data) => {
+			{searchingDatas?.map((data, index) => {
 				const splitedArr = data.split("<b>")
 				return (
-					<div key={data}>
+					<div key={data} style={{color: curLocation === index && 'red'}} >
 						<span>{splitedArr[0]}</span>
 						<b>{splitedArr[1]}</b>
 						<span>{splitedArr[2]}</span>
