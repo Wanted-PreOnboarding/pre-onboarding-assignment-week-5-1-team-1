@@ -3,29 +3,21 @@ import styled from 'styled-components';
 import SearchBox from '../SearchBox';
 import Recommendation from '../Recommendation';
 import useSearch from '../../hooks/useSearch';
+import useEvent from '../../hooks/useEvent';
+import { boldMaker } from '../../util/boldMaker';
 
 const Search = () => {
 	const {input, searchList, onChangeInput} = useSearch()
+	const {handleNavigate, curLocation, isOpenRecommend, setOpenRecommend} = useEvent()
 	const [searchingDatas, setSearchingDatas] = useState([])
-	const [curLocation, setCurLocation] = useState(0)
 
-	function handleNavigate(e){
-		const {key} = e
-		if(key === 'ArrowDown'){
-			setCurLocation(curLocation + 1)
-		}else if(key === 'ArrowUp'){
-			setCurLocation(curLocation - 1)
-		}
-	}
 
 	useEffect(() => {
 		if(input){
 			const trimmed5List = searchList.slice(0,5)
-			const boldedDatas = trimmed5List.map((data) => {
-				let regex = new RegExp(input, "gim");
-				return data.sickNm.replace(regex, `<b>${input}<b>`)
-			})
+			const boldedDatas = boldMaker(input, trimmed5List)
 			setSearchingDatas(boldedDatas)
+			setOpenRecommend(true)
 		}
 	}, [searchList])
 	
@@ -37,11 +29,13 @@ const Search = () => {
 				handleNavigate={handleNavigate}
 				onChangeInput={onChangeInput}
 			/>
-      <Recommendation 
+			{isOpenRecommend &&
+			<Recommendation 
 				input ={input}
 				searchingDatas={searchingDatas}
 				curLocation={curLocation}
-			/>
+			/>}
+
     </Container>
 	);
 };
