@@ -20,7 +20,8 @@ const Search = () => {
 
 	useEffect(() => {
 		if(input){
-			const boldedDatas = searchList.map((data) => {
+			const trimmed5List = searchList.slice(0,5)
+			const boldedDatas = trimmed5List.map((data) => {
 				let regex = new RegExp(input, "gim");
 				return data.sickNm.replace(regex, `<b>${input}<b>`)
 			})

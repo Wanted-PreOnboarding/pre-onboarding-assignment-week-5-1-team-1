@@ -7,11 +7,12 @@ function Recommendation({searchingDatas, curLocation}) {
     <Container>
       {searchingDatas?.map((data, index) => {
 				const splitedArr = data.split("<b>")
+        const randomNum = Math.random()* 1000
         let isActive = false
         if(curLocation === index){
           isActive = true
         }
-        return <RecommendItem splitedArr={splitedArr}isActive={isActive}/>
+        return <RecommendItem key={randomNum} splitedArr={splitedArr}isActive={isActive}/>
 			}
 			)}
     </Container>
