@@ -84,7 +84,28 @@
   
 ## 7. 폴더 구조
 <pre>
-
+├── App.js
+├── App.test.js
+├── api
+│   └── searchApi.js
+├── components
+│   ├── RecommendItem.jsx
+│   ├── Recommendation.jsx
+│   └── SearchBox.jsx
+├── hooks
+│   ├── useEvent.js
+│   └── useSearch.js
+├── index.js
+├── pages
+│   └── Search.jsx
+├── service
+│   ├── CacheService.js
+│   ├── CacheStorage.js
+│   └── HttpClient.js
+├── setupTests.js
+└── util
+    ├── boldMaker.js
+    └── debounce.js
 </pre>
 
 ## 8. 캐시에 대해서
