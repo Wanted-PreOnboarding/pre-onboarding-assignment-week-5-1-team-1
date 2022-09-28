@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
-import SearchBox from '../SearchBox';
-import Recommendation from '../Recommendation';
-import useSearch from '../../hooks/useSearch';
-import useEvent from '../../hooks/useEvent';
-import { boldMaker } from '../../util/boldMaker';
+import SearchBox from '../components/SearchBox';
+import Recommendation from '../components/Recommendation';
+import useSearch from '../hooks/useSearch';
+import useEvent from '../hooks/useEvent';
+import { boldMaker } from '../util/boldMaker';
 
 const Search = () => {
 	const {input, searchList, onChangeInput} = useSearch()
