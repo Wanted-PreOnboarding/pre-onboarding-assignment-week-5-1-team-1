@@ -6,7 +6,7 @@ function Recommendation() {
   return (
     <Container>
       <RecommendItem text={'췌장암'} />
-      <RecommendItem text={'췌장염'} />
+      <RecommendItem text={'췌장염'} isActive={true} />
       <RecommendItem text={'췌장 신드롬'} />
     </Container>
   );
@@ -18,4 +18,5 @@ const Container = styled.div`
   width: 28rem;
   background-color: white;
   border-radius: 1rem;
+  overflow: hidden;
 `;
