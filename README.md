@@ -26,13 +26,12 @@
 > cd pre-onboarding-assignment-week-5-1-team-1
 
 # 실행 방법
-> cd server
-> npm install
-> npm run start
 
-> cd client
-> npm install
-> npm run start
+# server 시작 
+> npm run server
+
+#client 시작
+> npm run client
 ```
 
 ## 3. 과제 소개
