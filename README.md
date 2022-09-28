@@ -17,6 +17,7 @@
 [8. 캐시에 대해서](#8-캐시에-대해서)
 
 ## 1. 데모 영상
+![Sep-29-2022 00-25-08](https://user-images.githubusercontent.com/85447054/192820340-e8ccd8cd-2cd3-43b1-82f0-e7f0fbe7e52e.gif)
 
 ## 2. 실행 방법
 
