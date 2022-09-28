@@ -13,7 +13,6 @@ function RecommendItem({ splitedArr, isActive, text }) {
     )
   }
 
-
   return (
     <Container isActive={isActive}>
       <StyledSearch />
