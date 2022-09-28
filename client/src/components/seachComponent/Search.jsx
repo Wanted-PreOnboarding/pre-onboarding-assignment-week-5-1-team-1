@@ -38,6 +38,7 @@ const Search = () => {
 				onChangeInput={onChangeInput}
 			/>
       <Recommendation 
+				input ={input}
 				searchingDatas={searchingDatas}
 				curLocation={curLocation}
 			/>

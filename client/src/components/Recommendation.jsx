@@ -2,7 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import RecommendItem from './RecommendItem';
 
-function Recommendation({searchingDatas, curLocation}) {
+function Recommendation({input, searchingDatas, curLocation}) {
+  if(searchingDatas?.length === 0 && input !== ""){
+    return (
+      <Container>
+        <RecommendItem text={'검색어 없음'} />
+      </Container>
+    )
+  }
+
   return (
     <Container>
       {searchingDatas?.map((data, index) => {
