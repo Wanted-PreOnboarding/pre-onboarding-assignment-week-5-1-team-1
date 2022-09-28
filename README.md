@@ -112,12 +112,15 @@
 
 ### 캐시를 어떻게 기술했는가?
 
-- 브라우저의 세션 스토리지를 사용하여 데이터를 캐싱
-- storage 객체에서 set, get 메서드로 세션 스토리지에 접근
-- cacheService 객체에서 전체적으로 캐싱 관련 서비스 관리
-- hook 내부에서 service 로직을 불러와 사용 후 component 에 뿌려줌
+![image](https://user-images.githubusercontent.com/64501757/192818448-6a7754f3-c3ae-4381-af5f-412f11892661.png)
+
+1. 브라우저의 세션 스토리지를 사용하여 데이터를 캐싱
+2. storage 객체에서 set, get 메서드로 세션 스토리지에 접근
+3. cacheService 객체에서 전체적으로 캐싱 관련 서비스 관리
+4. hook 내부에서 service 로직을 불러와 사용 후 component 에 뿌려줌
 
 ### 캐시 전략
 
 1. debounce
 2. caching
+- 세션 스토리지에 데이터 확인 후 캐시된 데이터가 존재하면 요청 x, 존재하지 않으면 api 요청
