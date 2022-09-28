@@ -14,7 +14,7 @@ function SearchBox() {
 export default SearchBox;
 
 const Container = styled.div`
-  margin-top: 20rem;
+  margin-top: 10%;
   background-color: white;
   width: 28rem;
   height: 4rem;
